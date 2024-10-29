@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bird Chat Widget</title>
-    <script defer type="module" src="https://embeddables.p.mbirdcdn.net/v1/web-components.es.js"></script>
-  </head>
-  <body>
-    <p>Loading Bird Chat Widget</p>
-    <messagebird-chat project-id="94de0c92-98df-4d61-acf2-dfa114a5c480" workspace-id="a1b37cbd-b29d-4371-a81a-c1cd939b73a2"></messagebird-chat>
-  </body>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Styles to make the chat widget full-screen -->
+  <style>
+    messagebird-chat {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      border-radius: 0 !important;
+    }
+
+    /* Hide the close button inside the chat widget */
+    messagebird-chat::part(close-button) {
+      display: none !important;
+    }
+  </style>
+  <!-- Module script -->
+  <script defer type="module" src="https://embeddables.p.mbirdcdn.net/v1/web-components.es.js"></script>
+</head>
+<body>
+  <button id="auto-chat" hidden data-mbchat-trigger="94de0c92-98df-4d61-acf2-dfa114a5c480"></button>
+
+  <messagebird-chat
+    project-id="94de0c92-98df-4d61-acf2-dfa114a5c480"
+    workspace-id="a1b37cbd-b29d-4371-a81a-c1cd939b73a2"
+  ></messagebird-chat>
+
+  <!-- Script to auto-trigger the chat button -->
+  <script>
+    window.addEventListener("load", function () {
+      const chatButton = document.getElementById("auto-chat");
+      if (chatButton) {
+        chatButton.click(); // Automatically trigger the chat button
+        console.log("Chat button triggered after all resources have fully loaded.");
+      } else {
+        console.error("Chat button with ID 'auto-chat' not found.");
+      }
+    });
+  </script>
+</body>
 </html>
