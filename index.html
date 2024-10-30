@@ -48,7 +48,7 @@ document.querySelectorAll('button').forEach(button => {
     // Access the text content within the `.sr-only` span inside the button
     const srOnlyText = button.querySelector('.sr-only')?.textContent;
     
-    // Check if the `.sr-only` span text includes "close widget" or "Download transcript"
+    // Check if the `.sr-only` span text includes "close widget" or "Download transcript" 
     if (srOnlyText?.includes("close widget") || srOnlyText?.includes("Download transcript")) {
         // Set display to 'none' to hide the button
         button.style.display = 'none';
